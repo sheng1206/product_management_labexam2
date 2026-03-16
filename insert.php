@@ -1,9 +1,4 @@
 <?php
-// Show errors for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 include "db.php";
 
 // Get form data
@@ -21,11 +16,6 @@ if (isset($_FILES['picture']) && $_FILES['picture']['size'] > 0) {
 
         // Limit image size (5MB)
         if ($_FILES['picture']['size'] <= 5 * 1024 * 1024) {
-
-            // Ensure uploads folder exists
-            if (!is_dir('uploads')) {
-                mkdir('uploads', 0755, true);
-            }
 
             // Create unique filename
             $filename = time() . '_' . basename($_FILES['picture']['name']);
